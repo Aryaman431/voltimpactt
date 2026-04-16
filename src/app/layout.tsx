@@ -22,10 +22,16 @@ export const metadata: Metadata = {
   description:
     "Track, verify, and showcase your real-world volunteer contributions. Powered by the Proof of Impact Ledger.",
   keywords: ["volunteering", "impact", "community", "social good", "gamification"],
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
   openGraph: {
     title: "VoltImpact",
     description: "Turn Your Time Into Impact",
     type: "website",
+    images: [{ url: "/logo.png" }],
   },
 };
 

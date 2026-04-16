@@ -1,12 +1,26 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import type { Event } from "@/types";
+
+// Minimal interface — satisfied by both the DB Event type and the store AppEvent type
+interface MapEvent {
+  id: string;
+  title: string;
+  organization: string;
+  description: string;
+  location: string;
+  lat: number | null;
+  lng: number | null;
+  start_time: string;
+  hours_credit: number;
+  check_in_hash: string;
+  category: string;
+}
 
 interface EventMapProps {
-  events: Event[];
+  events: MapEvent[];
   selectedId: string | null;
-  onSelect: (event: Event) => void;
+  onSelect: (event: MapEvent) => void;
 }
 
 export default function EventMap({ events, selectedId, onSelect }: EventMapProps) {

@@ -252,7 +252,7 @@ export default function DiscoverPage() {
             <EventMap
               events={filtered.filter((e) => e.lat && e.lng)}
               selectedId={selected?.id ?? null}
-              onSelect={setSelected}
+              onSelect={(e) => setSelected(e as typeof filtered[0])}
             />
 
             {/* Selected event card overlay */}

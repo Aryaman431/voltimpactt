@@ -473,9 +473,8 @@ export const useVoltStore = create<VoltStore>()(
     }),
     {
       name: "voltimpact-store",
-      // Only persist user state — events/feed are re-initialized fresh
-      partialState: (state) => ({ user: state.user }),
-    } as Parameters<typeof persist>[1]
+      partialize: (state: VoltStore) => ({ user: state.user }),
+    }
   )
 );
 

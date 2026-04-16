@@ -6,8 +6,9 @@ import { motion, useInView } from "framer-motion";
 import { useAuth } from "@clerk/nextjs";
 import {
   Map, Calendar, Gift, Award, Users, Lock,
-  ArrowRight, Clock, MapPin, CheckCircle2, Zap,
+  ArrowRight, Clock, CheckCircle2, Zap,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 // Static preview data — shown on landing page
@@ -57,7 +58,7 @@ function AuthGate({ href, label }: { href: string; label: string }) {
 }
 
 function SectionHeader({ icon: Icon, title, subtitle, href, linkLabel }: {
-  icon: React.ComponentType<{ className?: string }>;
+  icon: LucideIcon;
   title: string; subtitle: string; href: string; linkLabel: string;
 }) {
   return (

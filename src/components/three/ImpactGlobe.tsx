@@ -58,8 +58,8 @@ function GlobePoints() {
   return (
     <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
       <PointMaterial
-        transparent color="#818cf8" size={0.008}
-        sizeAttenuation depthWrite={false} opacity={0.55}
+        transparent color="#ffffff" size={0.008}
+        sizeAttenuation depthWrite={false} opacity={0.45}
       />
     </Points>
   );
@@ -101,7 +101,7 @@ function ImpactMarkers() {
           {/* Core dot */}
           <mesh>
             <sphereGeometry args={[0.012, 8, 8]} />
-            <meshBasicMaterial color="#a78bfa" transparent opacity={0.9} />
+            <meshBasicMaterial color="#ffffff" transparent opacity={0.9} />
           </mesh>
           {/* Animated pulse ring */}
           <mesh
@@ -110,7 +110,7 @@ function ImpactMarkers() {
           >
             <ringGeometry args={[0.018, 0.022, 16]} />
             <meshBasicMaterial
-              color="#818cf8" transparent opacity={0.5}
+              color="#ffffff" transparent opacity={0.5}
               side={THREE.DoubleSide}
             />
           </mesh>
@@ -158,7 +158,7 @@ function GlobeWireframe({ mouseX, mouseY }: { mouseX: number; mouseY: number }) 
   return (
     <mesh ref={ref}>
       <sphereGeometry args={[1.51, 32, 32]} />
-      <meshBasicMaterial color="#4338ca" wireframe transparent opacity={0.07} />
+      <meshBasicMaterial color="#ffffff" wireframe transparent opacity={0.12} />
     </mesh>
   );
 }
@@ -176,10 +176,10 @@ function Atmosphere() {
 function Scene({ mouseX, mouseY }: { mouseX: number; mouseY: number }) {
   return (
     <>
-      <ambientLight intensity={0.2} />
-      <pointLight position={[5, 5, 5]}   intensity={1.5} color="#818cf8" />
-      <pointLight position={[-5, -3, -5]} intensity={0.5} color="#60a5fa" />
-      <pointLight position={[0, 5, -5]}  intensity={0.3} color="#a78bfa" />
+      <ambientLight intensity={0.4} />
+      <pointLight position={[5, 5, 5]}   intensity={1.2} color="#ffffff" />
+      <pointLight position={[-5, -3, -5]} intensity={0.4} color="#ffffff" />
+      <pointLight position={[0, 5, -5]}  intensity={0.2} color="#ffffff" />
       <Atmosphere />
       <GlobeMesh mouseX={mouseX} mouseY={mouseY} />
       <GlobeWireframe mouseX={mouseX} mouseY={mouseY} />
