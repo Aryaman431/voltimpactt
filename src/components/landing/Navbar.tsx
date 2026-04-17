@@ -43,7 +43,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group shrink-0">
           <div className="w-8 h-8 rounded-xl flex items-center justify-center transition-transform group-hover:scale-105"
-            style={{ background: "linear-gradient(135deg, var(--violet), var(--indigo))" }}>
+            style={{ background: "linear-gradient(135deg, #00d4aa, #0099ff)" }}>
             <Zap className="w-4 h-4 text-white" strokeWidth={2.5} />
           </div>
           <span className="font-semibold tracking-tight" style={{ color: "var(--text-primary)" }}>VoltImpact</span>

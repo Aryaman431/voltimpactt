@@ -73,11 +73,11 @@ function Particles() {
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background orbs */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="orb w-[700px] h-[700px] top-1/4 left-1/2 -translate-x-1/2" style={{ background: "rgba(139,92,246,0.07)" }} />
-        <div className="orb w-[400px] h-[400px] top-1/3 left-1/4" style={{ background: "rgba(99,102,241,0.05)" }} />
-        <div className="orb w-[300px] h-[300px] bottom-1/4 right-1/4" style={{ background: "rgba(139,92,246,0.04)" }} />
+      {/* Background orbs — clamped so they don't overflow on mobile */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="orb" style={{ width: "min(700px,90vw)", height: "min(700px,90vw)", top: "25%", left: "50%", transform: "translateX(-50%)", background: "rgba(139,92,246,0.07)" }} />
+        <div className="orb" style={{ width: "min(400px,60vw)", height: "min(400px,60vw)", top: "33%", left: "25%", background: "rgba(99,102,241,0.05)" }} />
+        <div className="orb" style={{ width: "min(300px,50vw)", height: "min(300px,50vw)", bottom: "25%", right: "25%", background: "rgba(139,92,246,0.04)" }} />
       </div>
 
       {/* Subtle grid */}
@@ -91,8 +91,8 @@ export default function HeroSection() {
 
       <Particles />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-16 w-full">
-        <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[calc(100vh-6rem)]">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 pt-20 sm:pt-24 pb-12 sm:pb-16 w-full">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center min-h-[calc(100vh-5rem)]">
 
           {/* Left */}
           <div className="flex flex-col justify-center">
@@ -150,7 +150,7 @@ export default function HeroSection() {
             </FadeUp>
 
             <FadeUp delay={0.4}>
-              <div className="flex items-center gap-8 mt-12 pt-8" style={{ borderTop: "1px solid var(--border-subtle)" }}>
+              <div className="flex flex-wrap items-center gap-6 sm:gap-8 mt-10 sm:mt-12 pt-6 sm:pt-8" style={{ borderTop: "1px solid var(--border-subtle)" }}>
                 {[
                   { value: "12,400+", label: "Volunteers" },
                   { value: "84,000+", label: "Hours logged" },
@@ -165,12 +165,12 @@ export default function HeroSection() {
             </FadeUp>
           </div>
 
-          {/* Right: Globe */}
+          {/* Right: Globe — hidden on small phones, shown from sm up */}
           <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-            className="relative h-[500px] lg:h-[600px] flex items-center justify-center"
+            className="relative h-[320px] sm:h-[420px] lg:h-[580px] flex items-center justify-center"
           >
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div className="orb w-80 h-80" style={{ background: "rgba(139,92,246,0.08)" }} />

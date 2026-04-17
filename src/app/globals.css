@@ -13,13 +13,14 @@
     --border-default:rgba(255,255,255,0.09);
     --border-strong: rgba(255,255,255,0.14);
 
-    /* Accent */
-    --violet:        #8b5cf6;
+    /* Accent — electric teal, not AI-purple */
+    --volt:          #00d4aa;
+    --volt-dark:     #00bfa0;
+    --volt-dim:      rgba(0,212,170,0.12);
+    --violet:        #8b5cf6;   /* kept for badge/rarity colors only */
     --indigo:        #6366f1;
-    --violet-dim:    rgba(139,92,246,0.15);
-    --indigo-dim:    rgba(99,102,241,0.15);
 
-    /* Text */
+    /* Text — also set as solid fallbacks */
     --text-primary:  rgba(255,255,255,0.95);
     --text-secondary:rgba(255,255,255,0.55);
     --text-tertiary: rgba(255,255,255,0.30);
@@ -30,6 +31,12 @@
     --radius-md:  12px;
     --radius-lg:  16px;
     --radius-xl:  20px;
+  }
+
+  /* Force dark background on html too — prevents white flash on mobile */
+  html {
+    background-color: #0f1115;
+    color: rgba(255,255,255,0.95);
   }
 }
 
@@ -44,11 +51,29 @@
   body {
     background-color: var(--bg-base);
     color: var(--text-primary);
+    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    min-height: 100vh;
     /* Subtle noise texture */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  }
+
+  /* Ensure text is always visible — belt-and-suspenders for mobile browsers */
+  html, body, #__next {
+    color: rgba(255, 255, 255, 0.95);
+    background-color: #0f1115;
+  }
+
+  /* All text defaults to near-white — overridden per-element as needed */
+  * {
+    color: inherit;
+  }
+
+  p, span, div, h1, h2, h3, h4, h5, h6, a, li, td, th, label, button {
+    color: inherit;
   }
 
   ::selection {

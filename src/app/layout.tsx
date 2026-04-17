@@ -18,7 +18,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "VoltImpact — Turn Your Time Into Impact",
+  title: "VoltImpact",
   description:
     "Track, verify, and showcase your real-world volunteer contributions. Powered by the Proof of Impact Ledger.",
   keywords: ["volunteering", "impact", "community", "social good", "gamification"],
@@ -35,6 +35,13 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#0f1115",
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
@@ -43,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={`${inter.variable} ${mono.variable} dark`}
         suppressHydrationWarning
       >
-        <body className="font-sans antialiased min-h-screen" style={{ background: "var(--bg-base)", color: "var(--text-primary)" }}>
+        <body className="font-sans antialiased">
           {children}
         </body>
       </html>

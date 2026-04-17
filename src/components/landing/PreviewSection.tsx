@@ -62,15 +62,17 @@ function SectionHeader({ icon: Icon, title, subtitle, href, linkLabel }: {
   title: string; subtitle: string; href: string; linkLabel: string;
 }) {
   return (
-    <div className="flex items-start justify-between gap-4 mb-6">
+    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4 mb-5 sm:mb-6">
       <div>
         <div className="flex items-center gap-2 mb-1">
           <Icon className="w-4 h-4" style={{ color: "var(--violet)" }} />
-          <h2 className="text-xl font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>{title}</h2>
+          <h2 className="text-lg sm:text-xl font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>{title}</h2>
         </div>
         <p className="text-sm" style={{ color: "var(--text-tertiary)" }}>{subtitle}</p>
       </div>
-      <AuthGate href={href} label={linkLabel} />
+      <div className="shrink-0">
+        <AuthGate href={href} label={linkLabel} />
+      </div>
     </div>
   );
 }
@@ -80,8 +82,8 @@ export default function PreviewSection() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} id="features" className="py-24">
-      <div className="max-w-6xl mx-auto px-6 space-y-20">
+    <section ref={ref} id="features" className="py-16 sm:py-24">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 space-y-16 sm:space-y-20">
 
         {/* ── Events preview ──────────────────────────────────────── */}
         <motion.div
@@ -96,7 +98,7 @@ export default function PreviewSection() {
             href="/events"
             linkLabel="Browse all events"
           />
-          <div className="grid sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {PREVIEW_EVENTS.map((event, i) => (
               <motion.div
                 key={event.title}
@@ -142,7 +144,8 @@ export default function PreviewSection() {
             href="/badges"
             linkLabel="View all badges"
           />
-          <div className="grid grid-cols-4 sm:grid-cols-8 gap-3">
+          {/* Badge grid — 4 cols on mobile, 8 on sm+ */}
+          <div className="grid grid-cols-4 sm:grid-cols-8 gap-2 sm:gap-3">
             {PREVIEW_BADGES.map((badge, i) => (
               <motion.div
                 key={badge.name}
@@ -182,7 +185,7 @@ export default function PreviewSection() {
             href="/rewards"
             linkLabel="See all rewards"
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {PREVIEW_REWARDS.map((reward, i) => (
               <motion.div
                 key={reward.title}

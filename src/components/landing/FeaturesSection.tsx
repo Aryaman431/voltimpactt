@@ -70,13 +70,14 @@ export default function FeaturesSection() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="features" className="py-32 relative" ref={ref}>
+    <section id="features" className="py-20 sm:py-32 relative overflow-hidden" ref={ref}>
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-violet-900/5 blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-900/5 blur-[100px]"
+          style={{ width: "min(600px,80vw)", height: "min(600px,80vw)" }} />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -87,7 +88,7 @@ export default function FeaturesSection() {
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/50 text-xs font-medium mb-6">
             Everything you need
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl sm:text-5xl font-bold tracking-tight mb-4">
             Built for real impact
           </h2>
           <p className="text-white/40 text-lg max-w-xl mx-auto">
