@@ -1,13 +1,13 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { createServerSupabaseClient } from "@/lib/supabase";
-import AppShell from "@/components/shell/AppShell";
+import OrgShell from "@/components/org/OrgShell";
 
-export default async function AppLayout({ children }: { children: React.ReactNode }) {
+export default async function OrgLayout({ children }: { children: React.ReactNode }) {
   const { userId } = await auth();
   if (!userId) redirect("/sign-in");
 
-  // Check onboarding status
+  // Verify organizer role server-side
   const supabase = createServerSupabaseClient();
   const { data: user } = await supabase
     .from("users")
@@ -15,11 +15,11 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     .eq("clerk_id", userId)
     .single();
 
-  // New user — send to onboarding
+  // Not onboarded yet
   if (!user || !user.onboarding_complete) redirect("/onboarding");
 
-  // Organizer trying to access volunteer area — redirect to org dashboard
-  if (user.role === "organizer") redirect("/org/dashboard");
+  // Wrong role — send volunteers to their dashboard
+  if (user.role !== "organizer") redirect("/dashboard");
 
-  return <AppShell>{children}</AppShell>;
+  return <OrgShell>{children}</OrgShell>;
 }

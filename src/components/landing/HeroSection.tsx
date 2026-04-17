@@ -165,12 +165,12 @@ export default function HeroSection() {
             </FadeUp>
           </div>
 
-          {/* Right: Globe — hidden on small phones, shown from sm up */}
+          {/* Right: Globe — responsive height */}
           <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-            className="relative h-[320px] sm:h-[420px] lg:h-[580px] flex items-center justify-center"
+            className="relative h-[260px] sm:h-[380px] lg:h-[520px] flex items-center justify-center"
           >
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div className="orb w-80 h-80" style={{ background: "rgba(139,92,246,0.08)" }} />

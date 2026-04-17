@@ -10,6 +10,8 @@ const isProtected = createRouteMatcher([
   "/community(.*)",
   "/leaderboard(.*)",
   "/ledger(.*)",
+  "/onboarding(.*)",
+  "/org(.*)",
 ]);
 
 export default clerkMiddleware((auth, req) => {
@@ -17,5 +19,5 @@ export default clerkMiddleware((auth, req) => {
 });
 
 export const config = {
-  matcher: ["/((?!_next|.*\\..*).*)"],
+  matcher: ["/((?!_next|.*\\..*).*)" ],
 };
